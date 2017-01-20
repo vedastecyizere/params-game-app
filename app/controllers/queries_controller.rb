@@ -29,4 +29,21 @@ class QueriesController < ApplicationController
     end 
     render "segment_query_game.html.erb"
   end
+
+  def form_params
+     render "form_params.html.erb"
+   end 
+
+  def finding_url
+    winning_number = 50
+    @number = params[:form_message].to_i
+    if @number > winning_number
+      @message = "Guess lower"
+    elsif @number < winning_number
+      @message = "Guess higher"
+    elsif @number == winning_number
+      @message = "Woow! you won!"
+    end 
+    render "finding_url.html.erb"
+  end 
 end
